@@ -17,10 +17,12 @@ class App extends React.Component {
       // .catch(err => console.log(err))
   }
   render() {
+    const { monsters,searchField } = this.state;
+    const filteredMonster = monsters.filter ( monster => monster.name.toLowerCase().includes(searchField.toLocaleLowerCase()))
     return (
       <div className="App">
         <input type='search' placeholder='Search Monsters' onChange={e => this.setState( { searchField : e.target.value} )}/>
-        <CardList monsters={this.state.monsters}/>
+        <CardList monsters={filteredMonster}/>
       </div>
     );
   }
